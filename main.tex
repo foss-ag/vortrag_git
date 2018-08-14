@@ -33,12 +33,17 @@
 \author{@chef\_excellence}
 \institute[FOSS AG]{\textbf{F}ree and \textbf{O}pen \textbf{S}ource \textbf{S}oftware \textbf{AG}}
 
+
 \date{\today}
 
 %-----IMPLEMENTATION-----
 \begin{document}
 	\begin{frame}
 		\titlepage
+	\end{frame}
+
+	\begin{frame}
+		TODO: LICENSE
 	\end{frame}
 
 	\begin{frame}
@@ -51,12 +56,120 @@
 
 	\begin{frame}
 		\begin{figure}
-			\begin{subfigure}[t]{0.5\textwidth}
+			\begin{subfigure}[t]{0.3\textwidth}
 				\centering
-				\includegraphics[scale=0.2]{resources/git.png}
+				\includegraphics[width=\textwidth]{resources/subversion.png}
+				\caption*{\tiny{\cite{subversion}}}
+			\end{subfigure}
+			~
+			\begin{subfigure}[t]{0.3\textwidth}
+				\centering
+				\includegraphics[width=\textwidth]{resources/git.png}
 				\caption*{\tiny{\cite{git_logo}}}
 			\end{subfigure}
+			~
+			\begin{subfigure}[t]{0.3\textwidth}
+				\centering
+				\includegraphics[scale=0.6]{resources/mercurial.png}
+				\caption*{\tiny{\cite{mercurial}}}
+			\end{subfigure}
 		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Was macht Git anders?}
+		\centering
+		In a nutshell:\\
+		\textbf{Snapshots statt Diffs}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Diffs}
+		\begin{figure}[h]
+			\centering
+			\begin{tikzpicture}
+				\tikzstyle{version} = []
+				\tikzstyle{file}=[draw, minimum size=25pt]
+				\tikzstyle{diff}=[circle, draw, minimum size=25pt]
+				\tikzset{edge/.style = {->,> = latex}}
+				
+				% versions
+				\node[version](v1) at (0,1.5) {v1};
+				\node[version](v2) at (2,1.5) {v2};
+				\node[version](v3) at (4,1.5) {v3};
+				\node[version](v4) at (6,1.5) {v4};
+				\node[version](v5) at (8,1.5) {v5};
+				
+				% file A + diffs			
+				\node[file](A)   at (0,0) {A};
+				\node[diff](DA1) at (2,0) {$\Delta_1$};
+				\node[diff](DA2) at (6,0) {$\Delta_2$};
+				\draw[edge](A)   to (DA1);
+				\draw[edge](DA1) to (DA2);
+				
+				% file B + diffs
+				\node[file](B)   at (0,-1.5) {B};
+				\node[diff](DB1) at (4,-1.5) {$\Delta_1$};
+				\draw[edge](B)   to (DB1);
+				
+				% file C + diffs
+				\node[file](C)   at (2,-3) {C};
+				\node[diff](DC1) at (4,-3) {$\Delta_1$};
+				\node[diff](DC2) at (8,-3) {$\Delta_2$};
+				\draw[edge](C)   to (DC1);
+				\draw[edge](DC1) to (DC2);
+			\end{tikzpicture}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Snapshots}
+		\begin{figure}[h]
+			\centering
+			\begin{tikzpicture}
+			\tikzstyle{version} = []
+			\tikzstyle{file}=[draw, minimum size=25pt]
+			\tikzstyle{link} = [dash pattern=on 3pt off 3pt, draw, minimum size=25pt]
+			\tikzset{edge/.style = {-,> = latex, dashed}}
+			
+			% versions
+			\node[version](v1) at (0,1.5) {v1};
+			\node[version](v2) at (2,1.5) {v2};
+			\node[version](v3) at (4,1.5) {v3};
+			\node[version](v4) at (6,1.5) {v4};
+			\node[version](v5) at (8,1.5) {v5};
+			
+			% file A + diffs
+			\node[file](A)   	at (0,0) {A};
+			\node[file](A1)  	at (2,0) {A$_1$};
+			\node[link](linkA1) at (4,0) {A$_1$};
+			\node[file](A2)  	at (6,0) {A$_2$};
+			\node[link](linkA2)	at (8,0) {A$_2$};
+			\draw[edge](linkA1) to (A1);
+			\draw[edge](linkA2) to (A2);
+			
+			% file B + diffs
+			\node[file](B)   	 at (0,-1.5) {B};
+			\node[link](linkB)	 at (2,-1.5) {B};
+			\node[file](B1) 	 at (4,-1.5) {B$_1$};
+			\node[link](linkB1)  at (6,-1.5) {B$_1$};
+			\node[link](link1B1) at (8,-1.5) {B$_1$};
+			\draw[edge](linkB) 	 to (B);
+			\draw[edge](linkB1)  to (B1);
+			\draw[edge](link1B1) to (linkB1);
+			
+			% file C + diffs
+			\node[file](C)   	at (2,-3) {C};
+			\node[file](C1)  	at (4,-3) {C$_1$};
+			\node[link](linkC1)	at (6,-3) {C$_1$};
+ 			\node[file](C2) 	at (8,-3) {C$_2$};
+			\draw[edge](linkC1)	to (C1);
+			\end{tikzpicture}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Vorteile von Snapshots}
 	\end{frame}
 	
 	% NOTES
