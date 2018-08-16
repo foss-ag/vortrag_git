@@ -235,7 +235,79 @@
 			\item Zeigt zusaetzlich auch Dateien an, die nicht zum Projekt gehoeren (untracked files)
 		\end{itemize}
 	\end{frame}
+
+	\begin{frame}
+		\begin{figure}
+			\includegraphics[scale=0.6]{resources/sponge.jpg}
+			\caption*{\tiny{\cite{sponge}}}
+		\end{figure}
+	\end{frame}
 	
+	\begin{frame}
+		\frametitle{.gitignore}
+		Manche Dateien will man bewusst nicht hinzufuegen
+		\begin{itemize}
+			\item[$\Rightarrow$] \texttt{.gitignore}
+			\begin{itemize}
+				\item Fuege einzelne Dateien hinzu, die von Git ignoriert werden sollen
+				\item Regulaere Ausdruecke koennen verwendet werden, um z.B. alle Dateien eines bestimmten Formats auszuschliessen
+			\end{itemize}
+		\end{itemize}
+		Sammlung an Templates: \url{https://github.com/github/gitignore}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Branching}	
+		\begin{itemize}
+			\item Fast jedes VCS hat eine Art des Branching
+			\item Git's Branching ist leichtgewichtig und schnell!
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Branching - Beispiel}
+		Unser Projekt besteht aus 3 Dateien:
+		\begin{itemize}
+			\item[] \texttt{README}
+			\item[] \texttt{LICENSE}
+			\item[] \texttt{test.rb}
+		\end{itemize}
+	
+		\texttt{git add README LICENSE test.rb}\\
+		\texttt{git commit -m 'The initial commit of my project'}
+	\end{frame}
+	
+	\begin{frame}
+		\begin{figure}
+			\includegraphics[scale=0.4]{resources/commit-and-tree.png}
+			\caption*{\tiny{\cite{commit-and-tree}}}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\begin{figure}
+			\includegraphics[scale=0.4]{resources/commits-and-parents.png}
+			\caption*{\tiny{\cite{commit-and-tree}}}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Branching - Beispiel}
+		\begin{itemize}
+			\item Jeder Commit wird als Baum repraesentiert, der Informationen ueber den jeweiligen Snapshot abspeichert
+			\begin{itemize}
+				\item Autor
+				\item Commit message
+				\item Hashes
+			\end{itemize}
+			\item Jeder Commit wird an die Liste der bisherigen Commits angefuegt
+		\end{itemize}
+		$\Rightarrow$ ein Branch ist ein Pointer auf einen Commit
+	\end{frame}
+
+	\begin{frame}
+		master + HEAD
+	\end{frame}
 	% NOTES
 	%
 	% - Grundlegende Funktionen von Git
@@ -253,7 +325,7 @@
 	
 	\begin{frame}
 		\bibliographystyle{plain}
-		\bibliography{literatur}
+		\tiny\bibliography{literatur}
 		\addcontentsline{toc}{section}{\bibname}
 	\end{frame}
 	
