@@ -168,14 +168,77 @@
 		\end{figure}
 	\end{frame}
 
+	% Vorteile von Snapshots sind besonders stark, wenn es um Branching geht
+
 	\begin{frame}
-		\frametitle{Vorteile von Snapshots}
+		\frametitle{Git ist schnell!}
+		\begin{itemize}
+			\item Geschwindigkeitsvorteil gegenueber vielen anderen VCSs
+			\item Fast alle Operationen finden lokal statt und benoetigen keine Kommunikation mit einem Server
+			\begin{itemize}
+				\item Git-History durchsuchen
+				\item auf ein alte Revision wechseln
+				\item Aenderungen am Projekt commiten
+			\end{itemize}
+			\item[$\Rightarrow$] Kein Overhead durch Netzwerkkommunikation
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Support your local repo}
+		\begin{itemize}
+			\item Arbeiten und commiten auf lokaler Kopie des Projekts
+			\item \texttt{git push} schiebt Aenderung auf den Server
+			\item[$\Rightarrow$] erlaubt dezentralisiertes und lokales Arbeiten 
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Git vs. SVN}
+		\begin{itemize}
+			\item Aenderungen der Datei sind offline moeglich
+			\item keine lokalen Commits moeglich
+			\item \texttt{svn commit} = \texttt{git commit + git push}
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Die Dreifaltigkeit Gits}
+		Jede Datei im Repository hat einen von drei Zustaende:
+		\begin{itemize}
+			\item Modified\\
+				Die Datei wurde veraendert und entspricht nicht mehr der Version des momentanen Snapshots
+			\item Staged\\
+				Die Datei wurde fuer den naechsten Commit vorgemerkt und wird Teil des naechsten Snapshots
+			\item Commited\\
+				Die Datei wurde zum neuen Snapshot hinzugefuegt und ist in der lokalen Datenbank gespeichert
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Grundlegender Workflow}
+		\begin{enumerate}
+			\item Hack Hack Hack
+			\item Hinzufuegen der veraenderten Dateien zur Staging Area\\
+				\texttt{git add FILES}
+			\item Erstellen des neuen Snapshots (lokal)\\
+				\texttt{git commit -m COMMIT\_MESSAGE}
+			\item Schiebe alle Aenderungen auf den Server\\
+				\texttt{git push}
+		\end{enumerate}
+	\end{frame}
+
+	\begin{frame}
+	\frametitle{Statusbericht}
+		\begin{itemize}
+			\item Der Zustand der Dateien kann mit \texttt{git status -s} ueberprueft werden\\
+			\item Zeigt zusaetzlich auch Dateien an, die nicht zum Projekt gehoeren (untracked files)
+		\end{itemize}
 	\end{frame}
 	
 	% NOTES
 	%
 	% - Grundlegende Funktionen von Git
-	%   - Commits
 	%   - Branches
 	%   - Forks
 	%   - Merge
