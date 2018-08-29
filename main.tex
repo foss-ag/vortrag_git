@@ -9,7 +9,7 @@
 \usepackage{ngerman}
 \usepackage{xcolor}
 \usepackage{graphicx}
-\usepackage{subcaption}
+%\usepackage{subcaption}
 \usepackage{tikz}
 
 
@@ -56,23 +56,15 @@
 
 	\begin{frame}
 		\begin{figure}
-			\begin{subfigure}[t]{0.3\textwidth}
-				\centering
-				\includegraphics[width=\textwidth]{resources/subversion.png}
-				\caption*{\tiny{\cite{subversion}}}
-			\end{subfigure}
-			~
-			\begin{subfigure}[t]{0.3\textwidth}
-				\centering
-				\includegraphics[width=\textwidth]{resources/git.png}
-				\caption*{\tiny{\cite{git_logo}}}
-			\end{subfigure}
-			~
-			\begin{subfigure}[t]{0.3\textwidth}
-				\centering
-				\includegraphics[scale=0.6]{resources/mercurial.png}
-				\caption*{\tiny{\cite{mercurial}}}
-			\end{subfigure}
+			\centering
+			\includegraphics[scale=0.5]{resources/subversion.png}
+			\includegraphics[scale=0.2]{resources/git.png}
+			
+			\includegraphics[scale=0.6]{resources/mercurial.png}
+			
+			\tiny{\cite{subversion}}
+			\tiny{\cite{git_logo}}
+			\tiny{\cite{mercurial}}
 		\end{figure}
 	\end{frame}
 
@@ -239,7 +231,8 @@
 	\begin{frame}
 		\begin{figure}
 			\includegraphics[scale=0.6]{resources/sponge.jpg}
-			\caption*{\tiny{\cite{sponge}}}
+			
+			\tiny{\cite{sponge}}
 		\end{figure}
 	\end{frame}
 	
