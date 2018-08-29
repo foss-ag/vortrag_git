@@ -661,18 +661,122 @@
 		\end{figure}
 	\end{frame}
 
-	% NOTES
-	%
-	% - Grundlegende Funktionen von Git
-	%   - Merge
-	%
-	% - Git Workflow
-	%   - Arbeiten auf verschiedenen Branches
-	%   - Arbeiten mit Pull/Merge Request
-	%   - Issue-Tracker
-	%
-	% - Demonstrieren am Beispiel von Gitlab 
-	% 
+	\begin{frame}
+		\begin{figure}[h]
+			\centering
+			\begin{tikzpicture}
+			\tikzstyle{head} = []
+			\tikzstyle{branch}=[draw, minimum size=25pt]
+			\tikzstyle{commit} = [dash pattern=on 3pt off 3pt, draw, minimum size=25pt]
+			\tikzset{edge/.style = {-,-> = latex}}
+			
+			\node[head](history)at (0,0) {...};
+			\node[commit](commit3) at (3,0) {0de24};
+			\node[commit](commit4) at (6,-1) {87fa1};
+			\node[commit](commit5) at (6, 1) {76e0c};
+			\draw[edge](commit3) to (history);
+			\draw[edge](commit4) to (commit3);
+			\draw[edge](commit5) to (commit3);
+			
+			\node[branch](master) at (6,2.5) {\texttt{master}};
+			\draw[edge](master) to (commit5);
+			
+			\node[branch](testing) at (6,-2.5) {\texttt{testing}};
+			\draw[edge](testing) to (commit4);
+			
+			\end{tikzpicture}
+		\end{figure}
+		Merge \texttt{testing} und \texttt{master}.
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Three-Way-Merge}
+		\begin{itemize}
+			\item Merge \texttt{master} und \texttt{testing} mit Hilfe eines gemeinsamen vorhergehenden Knotens
+			\item Erzeuge neuen Commit, der sowohl die beiden Commits als Elternknoten hat und verschiebe \texttt{master}.
+			\item Lösche \texttt{testing}, da nicht weiter benötigt.
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+		\begin{figure}[h]
+			\centering
+			\begin{tikzpicture}
+			\tikzstyle{head} = []
+			\tikzstyle{branch}=[draw, minimum size=25pt]
+			\tikzstyle{commit} = [dash pattern=on 3pt off 3pt, draw, minimum size=25pt]
+			\tikzset{edge/.style = {-,-> = latex}}
+			
+			\node[head](history)at (0,0) {...};
+			\node[commit](commit3) at (3,0) {0de24};
+			\node[commit](commit4) at (6,-1) {87fa1};
+			\node[commit](commit5) at (6, 1) {76e0c};
+			\node[commit](commit6) at (9,0) {6ef23};
+			\draw[edge](commit3) to (history);
+			\draw[edge](commit4) to (commit3);
+			\draw[edge](commit5) to (commit3);
+			\draw[edge](commit6) to (commit4);
+			\draw[edge](commit6) to (commit5);
+			
+			\node[branch](master) at (9,2.5) {\texttt{master}};
+			\draw[edge](master) to (commit6);
+			
+			\end{tikzpicture}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Three-Way-Merge}
+		\begin{itemize}
+			\item Geht nicht immer ganz reibungslos $\rightarrow$ Merge-Konfilkte
+			\item Git markiert die Stellen die in Konflikt stehen
+			\item Manuelles lösen der Konflikte nötig
+		\end{itemize}
+	\end{frame}
+
+
+	\begin{frame}
+		\frametitle{Git Workflow}
+		\begin{itemize}
+			\item Änderungen an lokalem Branch vornehmen (\texttt{git add})
+			\begin{itemize}
+				\item Jeder Task sollte seinen eigenen Branch haben\\ (\texttt{git checkout -b BRANCH})
+			\end{itemize}
+			\item Lokale Snapshots erstellen (\texttt{git commit})
+			\item Snapshots auf den Server laden (\texttt{git push})
+			\item Merge mit \texttt{master}-Branch (\texttt{git merge BRANCH})
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Git Inside}
+		\begin{itemize}
+			\item Viele Dienste erweitern Git um eigene Funktion:
+			\begin{itemize}
+				\item Issue Tracker
+				\item Code Dokumentation
+				\item Merge-/Pull-Requests
+			\end{itemize}
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Issue Tracker}
+		\begin{itemize}
+			\item Verwaltung von Feature-Requests und Bugs
+			\item Diskussionsplattform
+			\item Weise Issues Branches und Personen zu
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Merge-/Pull-Requests}
+		\begin{itemize}
+			\item Möglichkeit einen Merge zu beantragen
+			\item Mehr-Augen-Prinzip: Merge muss angenommen werden
+			\item Diskussion über Merge möglich
+		\end{itemize}
+	\end{frame}
 	
 	\begin{frame}
 		\bibliographystyle{plain}
