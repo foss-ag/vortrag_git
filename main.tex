@@ -254,6 +254,7 @@
 		\begin{itemize}
 			\item Fast jedes VCS hat eine Art des Branching
 			\item Git's Branching ist leichtgewichtig und schnell!
+			\item Kein Kopieren von Dateien nötig!
 		\end{itemize}
 	\end{frame}
 
@@ -273,14 +274,16 @@
 	\begin{frame}
 		\begin{figure}
 			\includegraphics[scale=0.4]{resources/commit-and-tree.png}
-			\caption*{\tiny{\cite{commit-and-tree}}}
+			
+			\tiny{\cite{commit-and-tree}}
 		\end{figure}
 	\end{frame}
 
 	\begin{frame}
 		\begin{figure}
 			\includegraphics[scale=0.4]{resources/commits-and-parents.png}
-			\caption*{\tiny{\cite{commit-and-tree}}}
+			
+			\tiny{\cite{commit-and-parents}}
 		\end{figure}
 	\end{frame}
 
@@ -299,12 +302,222 @@
 	\end{frame}
 
 	\begin{frame}
-		master + HEAD
+		\frametitle{HEAD-master}
+		\begin{itemize}
+			\item \texttt{master}:\\
+				Keine besondere Stellung!\\
+				Bennenung erfolgt automatisch durch \texttt{git init}
+			\item \texttt{HEAD}:\\
+				Zeiger auf den Branch auf dem man lokal arbeitet.
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+		\begin{figure}[h]
+			\centering
+			\begin{tikzpicture}
+			\tikzstyle{version} = []
+			\tikzstyle{branch}=[draw, minimum size=25pt]
+			\tikzstyle{commit} = [dash pattern=on 3pt off 3pt, draw, minimum size=25pt]
+			\tikzset{edge/.style = {-,-> = latex}}
+
+			\node[commit](commit1) at (0,0) {92ec2};
+			\node[commit](commit2) at (3,0) {184ca};
+			\node[commit](commit3) at (6,0) {0de24};
+			\draw[edge](commit2) to (commit1);
+			\draw[edge](commit3) to (commit2);
+			
+			\node[branch](master) at (6,2) {\texttt{master}};
+			\draw[edge](master) to (commit3);
+
+			\end{tikzpicture}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\begin{figure}[h]
+			\centering
+			\begin{tikzpicture}
+			\tikzstyle{head} = []
+			\tikzstyle{branch}=[draw, minimum size=25pt]
+			\tikzstyle{commit} = [dash pattern=on 3pt off 3pt, draw, minimum size=25pt]
+			\tikzset{edge/.style = {-,-> = latex}}
+			
+			\node[commit](commit1) at (0,0) {92ec2};
+			\node[commit](commit2) at (3,0) {184ca};
+			\node[commit](commit3) at (6,0) {0de24};
+			\draw[edge](commit2) to (commit1);
+			\draw[edge](commit3) to (commit2);
+			
+			\node[branch](master) at (6,2) {\texttt{master}};
+			\draw[edge](master) to (commit3);
+			
+			\node[head](head) at (6,4) {\texttt{HEAD}};
+			\draw[edge](head) to (master);
+			
+			\end{tikzpicture}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\begin{figure}[h]
+			\centering
+			\begin{tikzpicture}
+			\tikzstyle{head} = []
+			\tikzstyle{branch}=[draw, minimum size=25pt]
+			\tikzstyle{commit} = [dash pattern=on 3pt off 3pt, draw, minimum size=25pt]
+			\tikzset{edge/.style = {-,-> = latex}}
+			
+			\node[commit](commit1) at (0,0) {92ec2};
+			\node[commit](commit2) at (3,0) {184ca};
+			\node[commit](commit3) at (6,0) {0de24};
+			\draw[edge](commit2) to (commit1);
+			\draw[edge](commit3) to (commit2);
+			
+			\node[branch](master) at (6,2) {\texttt{master}};
+			\draw[edge](master) to (commit3);
+			
+			\node[branch](testing) at (6,-2) {\texttt{testing}};
+			\draw[edge](testing) to (commit3);
+			
+			\node[head](head) at (6,4) {\texttt{HEAD}};
+			\draw[edge](head) to (master);
+			
+			\end{tikzpicture}
+		\end{figure}
+		Erstellen eines \texttt{testing} Branch.
+	\end{frame}
+
+	\begin{frame}
+		\begin{figure}[h]
+			\centering
+			\begin{tikzpicture}
+			\tikzstyle{head} = []
+			\tikzstyle{branch}=[draw, minimum size=25pt]
+			\tikzstyle{commit} = [dash pattern=on 3pt off 3pt, draw, minimum size=25pt]
+			\tikzset{edge/.style = {-,-> = latex}}
+			
+			\node[commit](commit1) at (0,0) {92ec2};
+			\node[commit](commit2) at (3,0) {184ca};
+			\node[commit](commit3) at (6,0) {0de24};
+			\draw[edge](commit2) to (commit1);
+			\draw[edge](commit3) to (commit2);
+			
+			\node[branch](master) at (6,2) {\texttt{master}};
+			\draw[edge](master) to (commit3);
+			
+			\node[branch](testing) at (6,-2) {\texttt{testing}};
+			\draw[edge](testing) to (commit3);
+			
+			\node[head](head) at (6,-4) {\texttt{HEAD}};
+			\draw[edge](head) to (testing);
+			
+			\end{tikzpicture}
+		\end{figure}
+		Wechseln auf den \texttt{testing} Branch.
+	\end{frame}
+
+	\begin{frame}
+		\begin{figure}[h]
+			\centering
+			\begin{tikzpicture}
+			\tikzstyle{head} = []
+			\tikzstyle{branch}=[draw, minimum size=25pt]
+			\tikzstyle{commit} = [dash pattern=on 3pt off 3pt, draw, minimum size=25pt]
+			\tikzset{edge/.style = {-,-> = latex}}
+			
+			\node[commit](commit1) at (0,0) {92ec2};
+			\node[commit](commit2) at (3,0) {184ca};
+			\node[commit](commit3) at (6,0) {0de24};
+			\node[commit](commit4) at (9,0) {87fa1};
+			\draw[edge](commit2) to (commit1);
+			\draw[edge](commit3) to (commit2);
+			\draw[edge](commit4) to (commit3);
+			
+			\node[branch](master) at (6,2) {\texttt{master}};
+			\draw[edge](master) to (commit3);
+			
+			\node[branch](testing) at (9,-2) {\texttt{testing}};
+			\draw[edge](testing) to (commit4);
+			
+			\node[head](head) at (9,-4) {\texttt{HEAD}};
+			\draw[edge](head) to (testing);
+			
+			\end{tikzpicture}
+		\end{figure}
+		Commit auf dem \texttt{testing} Branch.
+	\end{frame}
+
+	\begin{frame}
+		\begin{figure}[h]
+			\centering
+			\begin{tikzpicture}
+			\tikzstyle{head} = []
+			\tikzstyle{branch}=[draw, minimum size=25pt]
+			\tikzstyle{commit} = [dash pattern=on 3pt off 3pt, draw, minimum size=25pt]
+			\tikzset{edge/.style = {-,-> = latex}}
+			
+			\node[commit](commit1) at (0,0) {92ec2};
+			\node[commit](commit2) at (3,0) {184ca};
+			\node[commit](commit3) at (6,0) {0de24};
+			\node[commit](commit4) at (9,0) {87fa1};
+			\draw[edge](commit2) to (commit1);
+			\draw[edge](commit3) to (commit2);
+			\draw[edge](commit4) to (commit3);
+			
+			\node[branch](master) at (6,2) {\texttt{master}};
+			\draw[edge](master) to (commit3);
+			
+			\node[branch](testing) at (9,-2) {\texttt{testing}};
+			\draw[edge](testing) to (commit4);
+			
+			\node[head](head) at (6,4) {\texttt{HEAD}};
+			\draw[edge](head) to (master);
+			
+			\end{tikzpicture}
+		\end{figure}
+		Wechseln auf den \texttt{master} Branch.
+	\end{frame}
+
+	\begin{frame}
+		\begin{figure}[h]
+			\centering
+			\begin{tikzpicture}
+			\tikzstyle{head} = []
+			\tikzstyle{branch}=[draw, minimum size=25pt]
+			\tikzstyle{commit} = [dash pattern=on 3pt off 3pt, draw, minimum size=25pt]
+			\tikzset{edge/.style = {-,-> = latex}}
+			
+			\node[commit](commit1) at (0,0) {92ec2};
+			\node[commit](commit2) at (3,0) {184ca};
+			\node[commit](commit3) at (6,0) {0de24};
+			\node[commit](commit4) at (9,-1) {87fa1};
+			\node[commit](commit5) at (9, 1) {76e0c};
+			\draw[edge](commit2) to (commit1);
+			\draw[edge](commit3) to (commit2);
+			\draw[edge](commit4) to (commit3);
+			\draw[edge](commit5) to (commit3);
+			
+			\node[branch](master) at (9,2.5) {\texttt{master}};
+			\draw[edge](master) to (commit5);
+			
+			\node[branch](testing) at (9,-2.5) {\texttt{testing}};
+			\draw[edge](testing) to (commit4);
+			
+			\node[head](head) at (9,4) {\texttt{HEAD}};
+			\draw[edge](head) to (master);
+			
+			\end{tikzpicture}
+		\end{figure}
+		Commit auf dem \texttt{master} Branch.
+	\end{frame}
+
+	\begin{frame}
+		Unterschied Branch vs Fork
 	\end{frame}
 	% NOTES
 	%
 	% - Grundlegende Funktionen von Git
-	%   - Branches
 	%   - Forks
 	%   - Merge
 	%
