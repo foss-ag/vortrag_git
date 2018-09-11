@@ -30,11 +30,8 @@
 	FOSS-AG
 }
 \subtitle{Git}
-\author{@chef\_excellence}
+\author{\footnotesize{@chef\_excellence}}
 \institute[FOSS AG]{\textbf{F}ree and \textbf{O}pen \textbf{S}ource \textbf{S}oftware \textbf{AG}}
-
-
-\date{\today}
 
 %-----IMPLEMENTATION-----
 \begin{document}
@@ -172,12 +169,12 @@
 	\begin{frame}
 		\frametitle{Git ist schnell!}
 		\begin{itemize}
-			\item Geschwindigkeitsvorteil gegenueber vielen anderen VCSs
-			\item Fast alle Operationen finden lokal statt und benoetigen keine Kommunikation mit einem Server
+			\item Geschwindigkeitsvorteil gegenüber vielen anderen VCSs
+			\item Fast alle Operationen finden lokal statt und benötigen keine Kommunikation mit einem Server
 			\begin{itemize}
 				\item Git-History durchsuchen
 				\item auf ein alte Revision wechseln
-				\item Aenderungen am Projekt commiten
+				\item Änderungen am Projekt commiten
 			\end{itemize}
 			\item[$\Rightarrow$] Kein Overhead durch Netzwerkkommunikation
 		\end{itemize}
@@ -187,7 +184,7 @@
 		\frametitle{Support your local repo}
 		\begin{itemize}
 			\item Arbeiten und commiten auf lokaler Kopie des Projekts
-			\item \texttt{git push} schiebt Aenderung auf den Server
+			\item \texttt{git push} schiebt Änderung auf den Server
 			\item[$\Rightarrow$] erlaubt dezentralisiertes und lokales Arbeiten 
 		\end{itemize}
 	\end{frame}
@@ -195,22 +192,22 @@
 	\begin{frame}
 		\frametitle{Git vs. SVN}
 		\begin{itemize}
-			\item Aenderungen der Datei sind offline moeglich
-			\item keine lokalen Commits moeglich
+			\item Änderungen der Datei sind offline möglich
+			\item keine lokalen Commits möglich
 			\item \texttt{svn commit} = \texttt{git commit + git push}
 		\end{itemize}
 	\end{frame}
 
 	\begin{frame}
 		\frametitle{Die Dreifaltigkeit Gits}
-		Jede Datei im Repository hat einen von drei Zustaende:
+		Jede Datei im Repository hat einen von drei Zustände:
 		\begin{itemize}
 			\item Modified\\
-				Die Datei wurde veraendert und entspricht nicht mehr der Version des momentanen Snapshots
+				Die Datei wurde verändert und entspricht nicht mehr der Version des momentanen Snapshots
 			\item Staged\\
-				Die Datei wurde fuer den naechsten Commit vorgemerkt und wird Teil des naechsten Snapshots
+				Die Datei wurde für den nächsten Commit vorgemerkt und wird Teil des nächsten Snapshots
 			\item Commited\\
-				Die Datei wurde zum neuen Snapshot hinzugefuegt und ist in der lokalen Datenbank gespeichert
+				Die Datei wurde zum neuen Snapshot hinzugefügt und ist in der lokalen Datenbank gespeichert
 		\end{itemize}
 	\end{frame}
 
@@ -218,11 +215,11 @@
 		\frametitle{Grundlegender Workflow}
 		\begin{enumerate}
 			\item Hack Hack Hack
-			\item Hinzufuegen der veraenderten Dateien zur Staging Area\\
+			\item Hinzufügen der veränderten Dateien zur Staging Area\\
 				\texttt{git add FILES}
 			\item Erstellen des neuen Snapshots (lokal)\\
 				\texttt{git commit -m COMMIT\_MESSAGE}
-			\item Schiebe alle Aenderungen auf den Server\\
+			\item Schiebe alle Änderungen auf den Server\\
 				\texttt{git push}
 		\end{enumerate}
 	\end{frame}
@@ -230,8 +227,8 @@
 	\begin{frame}
 	\frametitle{Statusbericht}
 		\begin{itemize}
-			\item Der Zustand der Dateien kann mit \texttt{git status -s} ueberprueft werden\\
-			\item Zeigt zusaetzlich auch Dateien an, die nicht zum Projekt gehoeren (untracked files)
+			\item Der Zustand der Dateien kann mit \texttt{git status -s} überprüft werden\\
+			\item Zeigt zusätzlich auch Dateien an, die nicht zum Projekt gehören (untracked files)
 		\end{itemize}
 	\end{frame}
 
@@ -245,12 +242,12 @@
 	
 	\begin{frame}
 		\frametitle{.gitignore}
-		Manche Dateien will man bewusst nicht hinzufuegen
+		Manche Dateien will man bewusst nicht hinzufügen
 		\begin{itemize}
 			\item[$\Rightarrow$] \texttt{.gitignore}
 			\begin{itemize}
-				\item Fuege einzelne Dateien hinzu, die von Git ignoriert werden sollen
-				\item Regulaere Ausdruecke koennen verwendet werden, um z.B. alle Dateien eines bestimmten Formats auszuschliessen
+				\item Füge einzelne Dateien hinzu, die von Git ignoriert werden sollen
+				\item Reguläre Ausdrücke können verwendet werden, um z.B. alle Dateien eines bestimmten Formats auszuschliessen
 			\end{itemize}
 		\end{itemize}
 		Sammlung an Templates: \url{https://github.com/github/gitignore}
@@ -297,13 +294,13 @@
 	\begin{frame}
 		\frametitle{Branching - Beispiel}
 		\begin{itemize}
-			\item Jeder Commit wird als Baum repraesentiert, der Informationen ueber den jeweiligen Snapshot abspeichert
+			\item Jeder Commit wird als Baum repräsentiert, der Informationen über den jeweiligen Snapshot abspeichert
 			\begin{itemize}
 				\item Autor
 				\item Commit message
 				\item Hashes
 			\end{itemize}
-			\item Jeder Commit wird an die Liste der bisherigen Commits angefuegt
+			\item Jeder Commit wird an die Liste der bisherigen Commits angefügt
 		\end{itemize}
 		$\Rightarrow$ ein Branch ist ein Pointer auf einen Commit
 	\end{frame}
